@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Budget friendly logo</title>
+  <desc id="desc">A wallet and coin mark representing budget friendly marketing.</desc>
+  <defs>
+    <linearGradient id="wallet" x1="20" y1="34" x2="108" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1EA95C"/>
+      <stop offset="1" stop-color="#0A6CF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F8EF"/>
+  <rect x="22" y="42" width="84" height="54" rx="14" fill="url(#wallet)"/>
+  <path d="M32 36h54c8 0 14 6 14 14v5H32c-7 0-12-4-12-9s5-10 12-10Z" fill="#FFFFFF"/>
+  <rect x="72" y="58" width="34" height="24" rx="12" fill="#0D1E3A" opacity="0.2"/>
+  <circle cx="86" cy="70" r="6" fill="#FFFFFF"/>
+  <circle cx="48" cy="69" r="18" fill="#FFFFFF"/>
+  <text x="48" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1EA95C">Rs</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Gmail logo</title>
+  <desc id="desc">A multicolor Gmail style envelope logo for email contact details.</desc>
+  <rect width="128" height="128" rx="28" fill="#FFFFFF"/>
+  <path d="M26 38h76c6 0 10 4 10 10v52c0 6-4 10-10 10H26c-6 0-10-4-10-10V48c0-6 4-10 10-10Z" fill="#F1F3F4"/>
+  <path d="M16 50v50c0 6 4 10 10 10h14V66L16 50Z" fill="#34A853"/>
+  <path d="M112 50v50c0 6-4 10-10 10H88V66l24-16Z" fill="#4285F4"/>
+  <path d="M40 66 16 50v-2c0-6 4-10 10-10h4l34 25 34-25h4c6 0 10 4 10 10v2L88 66 64 84 40 66Z" fill="#EA4335"/>
+  <path d="M40 66v44h48V66L64 84 40 66Z" fill="#FFFFFF"/>
+  <path d="M30 38 64 63 98 38H30Z" fill="#FBBC04"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Result tracking logo</title>
+  <desc id="desc">A rising chart and check mark representing result tracking.</desc>
+  <defs>
+    <linearGradient id="chart" x1="24" y1="28" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A6CF5"/>
+      <stop offset="1" stop-color="#1A5CA8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F3FF"/>
+  <rect x="24" y="26" width="80" height="76" rx="14" fill="#FFFFFF"/>
+  <path d="M38 88V66" stroke="#BFE4FF" stroke-width="9" stroke-linecap="round"/>
+  <path d="M58 88V54" stroke="#7DC4FF" stroke-width="9" stroke-linecap="round"/>
+  <path d="M78 88V42" stroke="#0A6CF5" stroke-width="9" stroke-linecap="round"/>
+  <path d="M36 72 55 58l18 8 23-28" fill="none" stroke="url(#chart)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M91 38h-17m17 0v17" fill="none" stroke="#1A5CA8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="88" cy="90" r="18" fill="#1EA95C"/>
+  <path d="m78 90 7 7 14-16" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

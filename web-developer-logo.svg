@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Web developer logo</title>
+  <desc id="desc">A professional web development logo with a browser window, code brackets, and a cursor.</desc>
+  <defs>
+    <linearGradient id="screen" x1="22" y1="22" x2="106" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A6CF5"/>
+      <stop offset="1" stop-color="#1A5CA8"/>
+    </linearGradient>
+    <linearGradient id="cursor" x1="72" y1="68" x2="104" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7DC4FF"/>
+      <stop offset="1" stop-color="#0A6CF5"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F3FF"/>
+  <rect x="20" y="26" width="88" height="72" rx="14" fill="url(#screen)"/>
+  <rect x="20" y="26" width="88" height="20" rx="14" fill="#0D1E3A" opacity="0.92"/>
+  <circle cx="34" cy="36" r="3.2" fill="#FF6B6B"/>
+  <circle cx="46" cy="36" r="3.2" fill="#FFD166"/>
+  <circle cx="58" cy="36" r="3.2" fill="#2FD27A"/>
+  <path d="M50 63 38 74l12 11" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M78 63 90 74 78 85" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M68 58 58 90" fill="none" stroke="#BFE4FF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M75 72 101 102l-14 2-7 13-18-37c-2-4 4-10 13-8Z" fill="url(#cursor)" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"/>
+</svg>

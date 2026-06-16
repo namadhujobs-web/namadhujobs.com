@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Location contact logo</title>
+  <desc id="desc">A professional map pin icon for business location details.</desc>
+  <defs>
+    <linearGradient id="locationGradient" x1="35" y1="18" x2="93" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A6CF5"/>
+      <stop offset="1" stop-color="#1A5CA8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F3FF"/>
+  <path d="M64 18c-21 0-38 16-38 37 0 29 38 59 38 59s38-30 38-59c0-21-17-37-38-37Z" fill="url(#locationGradient)"/>
+  <circle cx="64" cy="55" r="16" fill="#FFFFFF"/>
+  <circle cx="64" cy="55" r="7" fill="#0A6CF5"/>
+  <path d="M38 106c7 6 45 6 52 0" fill="none" stroke="#7DC4FF" stroke-width="8" stroke-linecap="round"/>
+</svg>

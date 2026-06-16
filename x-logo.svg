@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">X logo</title>
+  <desc id="desc">A black X style social media logo.</desc>
+  <rect width="128" height="128" rx="28" fill="#000000"/>
+  <path d="M33 28h18l22 29 25-29h12L79 64l34 36H94L68 72 44 100H32l31-36L33 28Zm14 9 51 54h6L53 37h-6Z" fill="#FFFFFF"/>
+</svg>

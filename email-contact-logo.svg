@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Email contact logo</title>
+  <desc id="desc">A professional envelope icon for email contact details.</desc>
+  <defs>
+    <linearGradient id="mailGradient" x1="24" y1="36" x2="104" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A6CF5"/>
+      <stop offset="1" stop-color="#1EA95C"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F3FF"/>
+  <rect x="24" y="38" width="80" height="58" rx="14" fill="url(#mailGradient)"/>
+  <path d="M31 50 60 73c3 2 5 2 8 0l29-23" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34 88 55 69M94 88 73 69" fill="none" stroke="#BFE4FF" stroke-width="6" stroke-linecap="round"/>
+</svg>

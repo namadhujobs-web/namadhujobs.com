@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Phone contact logo</title>
+  <desc id="desc">A professional phone receiver icon for contact details.</desc>
+  <defs>
+    <linearGradient id="phoneGradient" x1="28" y1="24" x2="100" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A6CF5"/>
+      <stop offset="1" stop-color="#1A5CA8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#E8F3FF"/>
+  <circle cx="64" cy="64" r="42" fill="#FFFFFF"/>
+  <path d="M46 34c-5 2-11 8-13 13-3 8 1 21 12 34 12 14 29 24 41 24 7 0 15-5 18-11 2-4 1-8-3-10l-14-8c-4-2-8-1-11 3l-3 4c-2 2-5 2-8 0-8-5-15-12-20-20-2-3-2-6 0-8l4-3c4-3 5-7 3-11l-7-14c-2-4-6-5-10-3Z" fill="url(#phoneGradient)"/>
+  <path d="M76 31c12 3 21 12 24 24" fill="none" stroke="#7DC4FF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M78 46c5 2 9 6 11 11" fill="none" stroke="#7DC4FF" stroke-width="6" stroke-linecap="round"/>
+</svg>

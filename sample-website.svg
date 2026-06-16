@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-labelledby="title desc">
+  <title id="title">Website sample</title>
+  <desc id="desc">A sample business website layout.</desc>
+  <rect width="420" height="280" rx="18" fill="#F7FBFF"/>
+  <rect x="28" y="34" width="364" height="212" rx="18" fill="#FFFFFF" stroke="#DCEBFF" stroke-width="2"/>
+  <rect x="28" y="34" width="364" height="34" rx="18" fill="#0D1E3A"/>
+  <circle cx="52" cy="51" r="5" fill="#FF6B6B"/>
+  <circle cx="70" cy="51" r="5" fill="#FFD166"/>
+  <circle cx="88" cy="51" r="5" fill="#2FD27A"/>
+  <rect x="54" y="98" width="142" height="20" rx="10" fill="#1A5CA8"/>
+  <rect x="54" y="134" width="182" height="11" rx="5.5" fill="#7A95B5"/>
+  <rect x="54" y="154" width="144" height="11" rx="5.5" fill="#DCEBFF"/>
+  <rect x="54" y="188" width="96" height="32" rx="8" fill="#0A6CF5"/>
+  <rect x="260" y="96" width="82" height="112" rx="14" fill="#E8F3FF"/>
+  <rect x="276" y="116" width="50" height="10" rx="5" fill="#0A6CF5"/>
+  <rect x="276" y="144" width="50" height="48" rx="8" fill="#7DC4FF"/>
+</svg>

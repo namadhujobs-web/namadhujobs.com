@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Facebook logo</title>
+  <desc id="desc">A blue Facebook style f logo.</desc>
+  <rect width="128" height="128" rx="28" fill="#1877F2"/>
+  <path d="M74 46h13V26H72c-18 0-29 11-29 30v13H31v20h12v33h23V89h18l4-20H66V57c0-7 3-11 8-11Z" fill="#FFFFFF"/>
+</svg>

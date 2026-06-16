@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Instagram logo</title>
+  <desc id="desc">A gradient Instagram style camera logo.</desc>
+  <defs>
+    <linearGradient id="igGradient" x1="22" y1="106" x2="106" y2="22" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F58529"/>
+      <stop offset="0.35" stop-color="#DD2A7B"/>
+      <stop offset="0.7" stop-color="#8134AF"/>
+      <stop offset="1" stop-color="#515BD4"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#igGradient)"/>
+  <rect x="34" y="34" width="60" height="60" rx="18" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <circle cx="64" cy="64" r="15" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <circle cx="84" cy="44" r="5" fill="#FFFFFF"/>
+</svg>
