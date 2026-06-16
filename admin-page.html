@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Page | Namadhu Jobs</title>
+  <meta name="description" content="Admin page for Namadhu Jobs team members." />
+  <link rel="icon" href="assets/namadhu-jobs-logo-transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/portal-page.css" />
+</head>
+
+<body class="admin-page">
+  <nav class="portal-nav">
+    <a href="index.html" class="portal-logo" aria-label="Namadhu Jobs home">
+      <img src="assets/namadhu-jobs-logo-transparent.png" srcset="assets/namadhu-jobs-logo-transparent.png 960w, assets/namadhu-jobs-logo-transparent-4k.png 3840w" sizes="150px" alt="Namadhu Jobs logo" />
+    </a>
+    <div class="portal-nav-actions">
+      <a href="index.html" class="nav-pill">Home</a>
+      <a href="admin-login.html" class="nav-pill primary">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="portal-hero">
+      <div class="portal-wrap">
+        <span class="portal-badge">Admin Page</span>
+        <h1>Control Your Leads, Projects and Payments</h1>
+        <p class="portal-sub">A clean admin workspace for Namadhu Jobs to review enquiries, track active client work, monitor payments and plan daily follow-ups.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="portal-wrap admin-dashboard">
+        <div class="admin-summary-grid">
+          <article class="card metric-card">
+            <span class="metric-label">New Enquiries</span>
+            <span class="metric-number" id="newEnquiriesCount">12</span>
+            <p>Fresh leads waiting for callback.</p>
+          </article>
+
+          <article class="card metric-card">
+            <span class="metric-label">Active Projects</span>
+            <span class="metric-number" id="activeProjectsCount">8</span>
+            <p>Marketing and website work in progress.</p>
+          </article>
+
+          <article class="card metric-card">
+            <span class="metric-label">Payments Due</span>
+            <span class="metric-number" id="pendingAmount">Rs. 42K</span>
+            <p>Upcoming and pending client payments.</p>
+          </article>
+
+          <article class="card metric-card">
+            <span class="metric-label">This Month Revenue</span>
+            <span class="metric-number" id="paidAmount">Rs. 1.8L</span>
+            <p>Collected from campaigns and services.</p>
+          </article>
+        </div>
+
+        <div class="admin-main-grid">
+          <section class="card panel-card entry-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Add Data</span>
+                <h2>Enter New Records</h2>
+              </div>
+            </div>
+
+            <div class="entry-tabs" role="tablist" aria-label="Admin entry forms">
+              <button class="entry-tab active" type="button" data-entry-tab="enquiry">Enquiry</button>
+              <button class="entry-tab" type="button" data-entry-tab="payment">Payment</button>
+              <button class="entry-tab" type="button" data-entry-tab="project">Project</button>
+            </div>
+
+            <form class="entry-form active" data-entry-form="enquiry">
+              <input type="text" name="client" placeholder="Client name" required />
+              <select name="service" required>
+                <option value="">Select service</option>
+                <option>Meta Ads</option>
+                <option>YouTube Ads</option>
+                <option>Website</option>
+                <option>Social Media</option>
+                <option>WhatsApp Campaign</option>
+                <option>Poster Design</option>
+              </select>
+              <select name="status" required>
+                <option>New</option>
+                <option>Discussing</option>
+                <option>Quoted</option>
+                <option>Converted</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+                <option>Pending Payment</option>
+              </select>
+              <input type="text" name="followUp" placeholder="Follow up date" required />
+              <button class="button" type="submit">Add Enquiry</button>
+            </form>
+
+            <form class="entry-form" data-entry-form="payment">
+              <input type="text" name="client" placeholder="Client name" required />
+              <input type="text" name="details" placeholder="Payment details" required />
+              <input type="number" name="amount" placeholder="Amount" min="1" required />
+              <select name="status" required>
+                <option>Paid</option>
+                <option>Pending</option>
+              </select>
+              <button class="button" type="submit">Add Payment</button>
+            </form>
+
+            <form class="entry-form" data-entry-form="project">
+              <input type="text" name="client" placeholder="Client name" required />
+              <input type="text" name="details" placeholder="Project details" required />
+              <input type="number" name="progress" placeholder="Progress %" min="0" max="100" required />
+              <button class="button" type="submit">Add Project</button>
+            </form>
+          </section>
+
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Lead Desk</span>
+                <h2>Enquiries History</h2>
+              </div>
+              <a href="index.html#contact" class="mini-action">Contact Form</a>
+            </div>
+
+            <div class="table-tools">
+              <input type="search" id="enquirySearch" placeholder="Search enquiries" />
+              <select id="enquiryStatusFilter" aria-label="Filter enquiries by status">
+                <option value="all">All Status</option>
+                <option>New</option>
+                <option>Discussing</option>
+                <option>Quoted</option>
+                <option>Converted</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+                <option>Pending Payment</option>
+              </select>
+              <button class="mini-action export-action" type="button" data-export="enquiries">Export CSV</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>Follow Up</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="enquiryRows">
+                  <tr>
+                    <td>Vetri Stores</td>
+                    <td>Meta Ads</td>
+                    <td><span class="status-badge hot">New</span></td>
+                    <td>Today</td>
+                  </tr>
+                  <tr>
+                    <td>Bright Tuition</td>
+                    <td>Website</td>
+                    <td><span class="status-badge warm">Discussing</span></td>
+                    <td>Tomorrow</td>
+                  </tr>
+                  <tr>
+                    <td>Fresh Mart</td>
+                    <td>WhatsApp Campaign</td>
+                    <td><span class="status-badge cool">Quoted</span></td>
+                    <td>22 May</td>
+                  </tr>
+                  <tr>
+                    <td>Arun Salon</td>
+                    <td>Social Media</td>
+                    <td><span class="status-badge done">Converted</span></td>
+                    <td>Started</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Finance</span>
+                <h2>Payment History</h2>
+              </div>
+              <span class="mini-total" id="paymentTotal">Rs. 1.8L</span>
+            </div>
+            <button class="mini-action export-action section-export" type="button" data-export="payments">Export Payments CSV</button>
+
+            <div class="payment-list" id="paymentList">
+              <div class="payment-item">
+                <div>
+                  <strong>Arun Salon</strong>
+                  <span>Social media monthly plan</span>
+                </div>
+                <b>₹18,000</b>
+                <em>Paid</em>
+              </div>
+              <div class="payment-item pending">
+                <div>
+                  <strong>Fresh Mart</strong>
+                  <span>WhatsApp campaign advance</span>
+                </div>
+                <b>₹12,000</b>
+                <em>Pending</em>
+              </div>
+              <div class="payment-item">
+                <div>
+                  <strong>Vetri Stores</strong>
+                  <span>Meta ads setup</span>
+                </div>
+                <b>₹25,000</b>
+                <em>Paid</em>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="card panel-card">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">Delivery</span>
+              <h2>Active Project List</h2>
+            </div>
+            <a href="https://wa.me/917418130427" class="mini-action" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <button class="mini-action export-action section-export" type="button" data-export="projects">Export Projects CSV</button>
+
+          <div class="project-grid" id="projectList">
+            <article class="project-card">
+              <div class="project-topline">
+                <h3>Arun Salon</h3>
+                <span>75%</span>
+              </div>
+              <p>Instagram content calendar, posters and weekly reels.</p>
+              <div class="progress-bar"><span style="width:75%"></span></div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-topline">
+                <h3>Bright Tuition</h3>
+                <span>45%</span>
+              </div>
+              <p>Responsive website, admission enquiry form and SEO basics.</p>
+              <div class="progress-bar"><span style="width:45%"></span></div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-topline">
+                <h3>Fresh Mart</h3>
+                <span>30%</span>
+              </div>
+              <p>WhatsApp offer campaign with customer list segmentation.</p>
+              <div class="progress-bar"><span style="width:30%"></span></div>
+            </article>
+          </div>
+        </section>
+
+        <div class="admin-main-grid">
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Today</span>
+                <h2>Priority Tasks</h2>
+              </div>
+            </div>
+            <ul class="task-list admin-task-list">
+              <li><span class="status-dot"></span>Call all new enquiries before 6 PM</li>
+              <li><span class="status-dot amber"></span>Collect poster approval from Arun Salon</li>
+              <li><span class="status-dot blue"></span>Share website demo link to Bright Tuition</li>
+              <li><span class="status-dot"></span>Update payment status for Fresh Mart</li>
+            </ul>
+          </section>
+
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Campaigns</span>
+                <h2>Upcoming Schedule</h2>
+              </div>
+            </div>
+            <div class="schedule-list">
+              <div><strong>20 May</strong><span>Meta lead campaign launch</span></div>
+              <div><strong>21 May</strong><span>YouTube ad creative review</span></div>
+              <div><strong>22 May</strong><span>WhatsApp broadcast testing</span></div>
+              <div><strong>24 May</strong><span>Monthly report preparation</span></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="card panel-card">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">Customer Support</span>
+              <h2>User Requests</h2>
+            </div>
+          </div>
+          <div class="request-list" id="adminRequestList"></div>
+        </section>
+
+        <section class="card panel-card quick-panel">
+          <div>
+            <span class="panel-kicker">Quick Actions</span>
+            <h2>Move Work Faster</h2>
+            <p>Use these shortcuts for the regular admin actions you will need most often.</p>
+          </div>
+          <div class="actions">
+            <a href="index.html#contact" class="button">View Enquiry Form</a>
+            <a href="user-page.html" class="button secondary">Open User Page</a>
+            <a href="https://wa.me/917418130427" class="button secondary" target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const adminStoreKey = 'namadhuAdminRecords';
+    const requestStoreKey = 'namadhuUserRequests';
+    const defaultRecords = {
+      enquiries: [
+        { client: 'Vetri Stores', service: 'Meta Ads', status: 'New', followUp: 'Today' },
+        { client: 'Bright Tuition', service: 'Website', status: 'Discussing', followUp: 'Tomorrow' },
+        { client: 'Fresh Mart', service: 'WhatsApp Campaign', status: 'Quoted', followUp: '22 May' },
+        { client: 'Arun Salon', service: 'Social Media', status: 'Converted', followUp: 'Started' }
+      ],
+      payments: [
+        { client: 'Arun Salon', details: 'Social media monthly plan', amount: 18000, status: 'Paid' },
+        { client: 'Fresh Mart', details: 'WhatsApp campaign advance', amount: 12000, status: 'Pending' },
+        { client: 'Vetri Stores', details: 'Meta ads setup', amount: 25000, status: 'Paid' }
+      ],
+      projects: [
+        { client: 'Arun Salon', details: 'Instagram content calendar, posters and weekly reels.', progress: 75 },
+        { client: 'Bright Tuition', details: 'Responsive website, admission enquiry form and SEO basics.', progress: 45 },
+        { client: 'Fresh Mart', details: 'WhatsApp offer campaign with customer list segmentation.', progress: 30 }
+      ]
+    };
+
+    const loadRecords = () => {
+      const saved = localStorage.getItem(adminStoreKey);
+      return saved ? JSON.parse(saved) : defaultRecords;
+    };
+
+    let records = loadRecords();
+    let editState = { type: null, index: null };
+
+    const saveRecords = () => {
+      localStorage.setItem(adminStoreKey, JSON.stringify(records));
+    };
+
+    const formatMoney = (value) => `Rs. ${Number(value).toLocaleString('en-IN')}`;
+
+    const cleanText = (value) => String(value).replace(/[&<>"']/g, (match) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[match]));
+
+    const statusClass = (status) => {
+      const value = status.toLowerCase();
+      if (value === 'new') return 'hot';
+      if (value === 'discussing' || value === 'pending') return 'warm';
+      if (value === 'quoted') return 'cool';
+      if (value === 'in progress') return 'active';
+      if (value === 'pending payment') return 'danger';
+      if (value === 'completed') return 'complete';
+      return 'done';
+    };
+
+    const downloadCSV = (name, rows) => {
+      if (!rows.length) return;
+      const headers = Object.keys(rows[0]);
+      const escapeCSV = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+      const csv = [
+        headers.join(','),
+        ...rows.map((row) => headers.map((header) => escapeCSV(row[header])).join(','))
+      ].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `namadhu-${name}.csv`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    };
+
+    const updateSummary = () => {
+      const newCount = records.enquiries.filter((item) => item.status === 'New').length;
+      const pendingTotal = records.payments
+        .filter((item) => item.status === 'Pending')
+        .reduce((total, item) => total + Number(item.amount || 0), 0);
+      const paidTotal = records.payments
+        .filter((item) => item.status === 'Paid')
+        .reduce((total, item) => total + Number(item.amount || 0), 0);
+
+      document.getElementById('newEnquiriesCount').textContent = newCount;
+      document.getElementById('activeProjectsCount').textContent = records.projects.length;
+      document.getElementById('pendingAmount').textContent = formatMoney(pendingTotal);
+      document.getElementById('paidAmount').textContent = formatMoney(paidTotal);
+      document.getElementById('paymentTotal').textContent = formatMoney(paidTotal);
+    };
+
+    const resetEditState = () => {
+      editState = { type: null, index: null };
+      document.querySelector('[data-entry-form="enquiry"] .button').textContent = 'Add Enquiry';
+      document.querySelector('[data-entry-form="payment"] .button').textContent = 'Add Payment';
+      document.querySelector('[data-entry-form="project"] .button').textContent = 'Add Project';
+    };
+
+    const openEntryTab = (type) => {
+      document.querySelectorAll('.entry-tab').forEach((item) => item.classList.remove('active'));
+      document.querySelectorAll('.entry-form').forEach((form) => form.classList.remove('active'));
+      document.querySelector(`[data-entry-tab="${type}"]`).classList.add('active');
+      document.querySelector(`[data-entry-form="${type}"]`).classList.add('active');
+      document.querySelector('.entry-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const renderEnquiries = () => {
+      const search = document.getElementById('enquirySearch').value.toLowerCase();
+      const filter = document.getElementById('enquiryStatusFilter').value;
+      const rows = records.enquiries
+        .map((item, index) => ({ ...item, index }))
+        .filter((item) => {
+          const matchesSearch = [item.client, item.service, item.status, item.followUp]
+            .join(' ')
+            .toLowerCase()
+            .includes(search);
+          const matchesFilter = filter === 'all' || item.status === filter;
+          return matchesSearch && matchesFilter;
+        });
+
+      document.getElementById('enquiryRows').innerHTML = rows.map((item) => `
+        <tr>
+          <td>${cleanText(item.client)}</td>
+          <td>${cleanText(item.service)}</td>
+          <td><span class="status-badge ${statusClass(item.status)}">${cleanText(item.status)}</span></td>
+          <td>${cleanText(item.followUp)}</td>
+          <td>
+            <div class="record-actions">
+              <button type="button" data-action="edit" data-type="enquiry" data-index="${item.index}">Edit</button>
+              <button type="button" data-action="delete" data-type="enquiry" data-index="${item.index}">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('') || '<tr><td colspan="5">No matching enquiries found.</td></tr>';
+    };
+
+    const renderPayments = () => {
+      document.getElementById('paymentList').innerHTML = records.payments.map((item, index) => `
+        <div class="payment-item ${item.status === 'Pending' ? 'pending' : ''}">
+          <div>
+            <strong>${cleanText(item.client)}</strong>
+            <span>${cleanText(item.details)}</span>
+          </div>
+          <b>${formatMoney(item.amount)}</b>
+          <em>${cleanText(item.status)}</em>
+          <div class="record-actions compact">
+            <button type="button" data-action="edit" data-type="payment" data-index="${index}">Edit</button>
+            <button type="button" data-action="delete" data-type="payment" data-index="${index}">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    const renderProjects = () => {
+      document.getElementById('projectList').innerHTML = records.projects.map((item, index) => `
+        <article class="project-card">
+          <div class="project-topline">
+            <h3>${cleanText(item.client)}</h3>
+            <span>${item.progress}%</span>
+          </div>
+          <p>${cleanText(item.details)}</p>
+          <div class="progress-bar"><span style="width:${item.progress}%"></span></div>
+          <div class="record-actions">
+            <button type="button" data-action="edit" data-type="project" data-index="${index}">Edit</button>
+            <button type="button" data-action="delete" data-type="project" data-index="${index}">Delete</button>
+          </div>
+        </article>
+      `).join('');
+    };
+
+    const renderRequests = () => {
+      const requests = JSON.parse(localStorage.getItem(requestStoreKey) || '[]');
+      document.getElementById('adminRequestList').innerHTML = requests.map((item) => `
+        <article class="request-item">
+          <div>
+            <strong>${cleanText(item.subject)}</strong>
+            <span>${cleanText(item.client)} - ${cleanText(item.date)}</span>
+            <p>${cleanText(item.message)}</p>
+          </div>
+          <em class="status-badge ${statusClass(item.priority)}">${cleanText(item.priority)}</em>
+        </article>
+      `).join('') || '<p class="empty-copy">No user requests submitted yet.</p>';
+    };
+
+    const renderAll = () => {
+      renderEnquiries();
+      renderPayments();
+      renderProjects();
+      renderRequests();
+      updateSummary();
+    };
+
+    document.querySelectorAll('.entry-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        resetEditState();
+        document.querySelectorAll('.entry-form').forEach((form) => form.reset());
+        openEntryTab(tab.dataset.entryTab);
+      });
+    });
+
+    document.getElementById('enquirySearch').addEventListener('input', renderEnquiries);
+    document.getElementById('enquiryStatusFilter').addEventListener('change', renderEnquiries);
+
+    document.querySelector('[data-entry-form="enquiry"]').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const nextRecord = {
+        client: data.get('client'),
+        service: data.get('service'),
+        status: data.get('status'),
+        followUp: data.get('followUp')
+      };
+      if (editState.type === 'enquiry') {
+        records.enquiries[editState.index] = nextRecord;
+      } else {
+        records.enquiries.unshift(nextRecord);
+      }
+      saveRecords();
+      renderAll();
+      resetEditState();
+      event.currentTarget.reset();
+    });
+
+    document.querySelector('[data-entry-form="payment"]').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const nextRecord = {
+        client: data.get('client'),
+        details: data.get('details'),
+        amount: Number(data.get('amount')),
+        status: data.get('status')
+      };
+      if (editState.type === 'payment') {
+        records.payments[editState.index] = nextRecord;
+      } else {
+        records.payments.unshift(nextRecord);
+      }
+      saveRecords();
+      renderAll();
+      resetEditState();
+      event.currentTarget.reset();
+    });
+
+    document.querySelector('[data-entry-form="project"]').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const nextRecord = {
+        client: data.get('client'),
+        details: data.get('details'),
+        progress: Number(data.get('progress'))
+      };
+      if (editState.type === 'project') {
+        records.projects[editState.index] = nextRecord;
+      } else {
+        records.projects.unshift(nextRecord);
+      }
+      saveRecords();
+      renderAll();
+      resetEditState();
+      event.currentTarget.reset();
+    });
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-action]');
+      if (!button) return;
+
+      const type = button.dataset.type;
+      const index = Number(button.dataset.index);
+      const collectionNames = {
+        enquiry: 'enquiries',
+        payment: 'payments',
+        project: 'projects'
+      };
+      const collectionName = collectionNames[type];
+      const collection = records[collectionName];
+
+      if (button.dataset.action === 'delete') {
+        const recordName = collection[index]?.client || 'this record';
+        if (!confirm(`Delete ${recordName}? This cannot be undone.`)) return;
+        collection.splice(index, 1);
+        saveRecords();
+        renderAll();
+        return;
+      }
+
+      editState = { type, index };
+      openEntryTab(type);
+      const form = document.querySelector(`[data-entry-form="${type}"]`);
+      const record = collection[index];
+
+      Object.entries(record).forEach(([key, value]) => {
+        if (form.elements[key]) form.elements[key].value = value;
+      });
+
+      form.querySelector('.button').textContent = `Update ${type.charAt(0).toUpperCase()}${type.slice(1)}`;
+    });
+
+    document.querySelectorAll('[data-export]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const type = button.dataset.export;
+        downloadCSV(type, records[type]);
+      });
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

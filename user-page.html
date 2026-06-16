@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Portal | Namadhu Jobs</title>
+  <meta name="description" content="Customer portal for Namadhu Jobs clients to view project progress, payment status and support options." />
+  <link rel="icon" href="assets/namadhu-jobs-logo-transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/portal-page.css" />
+</head>
+
+<body class="user-portal-page">
+  <nav class="portal-nav">
+    <a href="index.html" class="portal-logo" aria-label="Namadhu Jobs home">
+      <img src="assets/namadhu-jobs-logo-transparent.png" srcset="assets/namadhu-jobs-logo-transparent.png 960w, assets/namadhu-jobs-logo-transparent-4k.png 3840w" sizes="150px" alt="Namadhu Jobs logo" />
+    </a>
+    <div class="portal-nav-actions">
+      <a href="index.html" class="nav-pill">Home</a>
+      <a href="user-login.html" class="nav-pill primary">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="portal-hero user-hero">
+      <div class="portal-wrap user-hero-grid">
+        <div>
+          <span class="portal-badge">Customer Portal</span>
+          <h1>Track Your Marketing Work Clearly</h1>
+          <p class="portal-sub">See your current project progress, payment status, next milestones and support options in one simple place.</p>
+          <div class="actions">
+            <a href="https://wa.me/917418130427" class="button" target="_blank" rel="noopener noreferrer">Contact Support</a>
+            <a href="index.html#services" class="button secondary">View Services</a>
+          </div>
+        </div>
+        <aside class="customer-card">
+          <span class="panel-kicker">Client View</span>
+          <h2 id="customerName">Your Business</h2>
+          <p id="customerService">Marketing service progress will appear here.</p>
+          <div class="progress-bar large"><span id="customerProgressBar" style="width:0%"></span></div>
+          <strong id="customerProgress">0% Completed</strong>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="portal-wrap user-dashboard">
+        <div class="admin-summary-grid">
+          <article class="card metric-card">
+            <span class="metric-label">Project Status</span>
+            <span class="metric-number" id="userProjectStatus">Active</span>
+            <p>Your current service is being tracked by the Namadhu Jobs team.</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-label">Progress</span>
+            <span class="metric-number" id="userProgressNumber">0%</span>
+            <p>Overall project completion based on admin updates.</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-label">Payment Status</span>
+            <span class="metric-number" id="userPaymentStatus">Pending</span>
+            <p>Latest payment update from the admin page.</p>
+          </article>
+          <article class="card metric-card">
+            <span class="metric-label">Support</span>
+            <span class="metric-number">24h</span>
+            <p>Expected response time for campaign and project questions.</p>
+          </article>
+        </div>
+
+        <div class="admin-main-grid">
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Projects</span>
+                <h2>Your Active Work</h2>
+              </div>
+            </div>
+            <div class="project-grid user-project-grid" id="userProjectList"></div>
+          </section>
+
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Finance</span>
+                <h2>Payment Summary</h2>
+              </div>
+              <span class="mini-total" id="userPaymentTotal">Rs. 0</span>
+            </div>
+            <div class="payment-list" id="userPaymentList"></div>
+          </section>
+        </div>
+
+        <div class="admin-main-grid">
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Milestones</span>
+                <h2>What Happens Next</h2>
+              </div>
+            </div>
+            <ul class="task-list user-milestones" id="userMilestones"></ul>
+          </section>
+
+          <section class="card panel-card">
+            <div class="panel-heading">
+              <div>
+                <span class="panel-kicker">Support</span>
+                <h2>Need Help?</h2>
+              </div>
+            </div>
+            <div class="support-list">
+              <a href="https://wa.me/917418130427" target="_blank" rel="noopener noreferrer">WhatsApp project support</a>
+              <a href="mailto:info@namadhujobs.com">Email Namadhu Jobs</a>
+              <button type="button" id="openRequestForm">Submit new request</button>
+            </div>
+          </section>
+        </div>
+
+        <section class="card panel-card request-panel" id="requestPanel" hidden>
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">New Request</span>
+              <h2>Send a Quick Request</h2>
+            </div>
+          </div>
+
+          <form class="request-form" id="requestForm">
+            <input type="text" name="subject" placeholder="Request title" required />
+            <select name="priority" required>
+              <option>Normal</option>
+              <option>Urgent</option>
+              <option>Payment</option>
+              <option>Project Update</option>
+            </select>
+            <textarea name="message" placeholder="Type your request here" required></textarea>
+            <div class="request-actions">
+              <button class="button" type="submit">Submit Request</button>
+              <button class="button secondary" type="button" id="closeRequestForm">Cancel</button>
+            </div>
+          </form>
+
+          <p class="request-status" id="requestStatus" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const adminStoreKey = 'namadhuAdminRecords';
+    const requestStoreKey = 'namadhuUserRequests';
+    const defaultRecords = {
+      payments: [
+        { client: 'Arun Salon', details: 'Social media monthly plan', amount: 18000, status: 'Paid' },
+        { client: 'Fresh Mart', details: 'WhatsApp campaign advance', amount: 12000, status: 'Pending' },
+        { client: 'Vetri Stores', details: 'Meta ads setup', amount: 25000, status: 'Paid' }
+      ],
+      projects: [
+        { client: 'Arun Salon', details: 'Instagram content calendar, posters and weekly reels.', progress: 75 },
+        { client: 'Bright Tuition', details: 'Responsive website, admission enquiry form and SEO basics.', progress: 45 },
+        { client: 'Fresh Mart', details: 'WhatsApp offer campaign with customer list segmentation.', progress: 30 }
+      ]
+    };
+
+    const loggedUser = localStorage.getItem('namadhuPortalUser') || '';
+    const normalize = (value) => String(value || '').trim().toLowerCase();
+    const userKey = normalize(loggedUser);
+    const saved = localStorage.getItem(adminStoreKey);
+    const records = saved ? JSON.parse(saved) : defaultRecords;
+    const allProjects = records.projects || defaultRecords.projects;
+    const allPayments = records.payments || defaultRecords.payments;
+    const belongsToUser = (item) => {
+      const client = normalize(item.client);
+      return userKey && (client === userKey || client.includes(userKey) || userKey.includes(client));
+    };
+    const projects = allProjects.filter(belongsToUser);
+    const payments = allPayments.filter(belongsToUser);
+    const mainProject = projects[0];
+    const formatMoney = (value) => `Rs. ${Number(value).toLocaleString('en-IN')}`;
+    const cleanText = (value) => String(value).replace(/[&<>"']/g, (match) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[match]));
+    const statusClass = (status) => status === 'Pending' ? 'warm' : 'done';
+
+    if (!mainProject) {
+      document.getElementById('customerName').textContent = loggedUser || 'Customer';
+      document.getElementById('customerService').textContent = 'No project records are assigned to this login yet.';
+      document.getElementById('customerProgress').textContent = 'Waiting for admin update';
+      document.getElementById('customerProgressBar').style.width = '0%';
+      document.getElementById('userProgressNumber').textContent = '0%';
+      document.getElementById('userProjectStatus').textContent = 'No Data';
+      document.getElementById('userPaymentStatus').textContent = 'No Data';
+      document.getElementById('userPaymentTotal').textContent = formatMoney(0);
+      document.getElementById('userProjectList').innerHTML = '<article class="project-card user-project-card empty-state"><h3>No project assigned</h3><p>Please contact Namadhu Jobs support or ask admin to create a project using your exact client name.</p></article>';
+      document.getElementById('userPaymentList').innerHTML = '<div class="payment-item user-payment-item"><div><strong>No payment records</strong><span>Payment details will appear here after admin adds them for your client name.</span></div><b>Rs. 0</b><em class="status-badge warm">Waiting</em></div>';
+    } else {
+      document.getElementById('customerName').textContent = mainProject.client;
+      document.getElementById('customerService').textContent = mainProject.details;
+      document.getElementById('customerProgress').textContent = `${mainProject.progress}% Completed`;
+      document.getElementById('customerProgressBar').style.width = `${mainProject.progress}%`;
+      document.getElementById('userProgressNumber').textContent = `${mainProject.progress}%`;
+      document.getElementById('userProjectStatus').textContent = mainProject.progress >= 100 ? 'Completed' : 'Active';
+    }
+
+    if (mainProject) {
+      const latestPayment = payments.find((item) => item.client === mainProject.client) || payments[0];
+      document.getElementById('userPaymentStatus').textContent = latestPayment?.status || 'Pending';
+      document.getElementById('userPaymentTotal').textContent = formatMoney(payments.reduce((total, item) => total + Number(item.amount || 0), 0));
+
+      document.getElementById('userProjectList').innerHTML = projects.map((item) => `
+        <article class="project-card user-project-card">
+          <div class="project-topline">
+            <h3>${cleanText(item.client)}</h3>
+            <span>${item.progress}%</span>
+          </div>
+          <p>${cleanText(item.details)}</p>
+          <div class="progress-bar"><span style="width:${item.progress}%"></span></div>
+        </article>
+      `).join('');
+
+      document.getElementById('userPaymentList').innerHTML = payments.map((item) => `
+        <div class="payment-item user-payment-item ${item.status === 'Pending' ? 'pending' : ''}">
+          <div>
+            <strong>${cleanText(item.client)}</strong>
+            <span>${cleanText(item.details)}</span>
+          </div>
+          <b>${formatMoney(item.amount)}</b>
+          <em class="status-badge ${statusClass(item.status)}">${cleanText(item.status)}</em>
+        </div>
+      `).join('') || '<div class="payment-item user-payment-item"><div><strong>No payment records</strong><span>Payment details will appear after admin update.</span></div><b>Rs. 0</b><em class="status-badge warm">Waiting</em></div>';
+    }
+
+    document.getElementById('userMilestones').innerHTML = [
+      'Review latest project progress',
+      'Confirm pending approvals or content changes',
+      'Check payment status and next billing step',
+      'Contact support for urgent campaign updates'
+    ].map((item, index) => `<li><span class="status-dot ${index === 1 ? 'amber' : index === 2 ? 'blue' : ''}"></span>${item}</li>`).join('');
+
+    const requestPanel = document.getElementById('requestPanel');
+    const requestForm = document.getElementById('requestForm');
+    const requestStatus = document.getElementById('requestStatus');
+
+    document.getElementById('openRequestForm').addEventListener('click', () => {
+      requestPanel.hidden = false;
+      requestStatus.textContent = '';
+      requestPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      requestForm.elements.subject.focus();
+    });
+
+    document.getElementById('closeRequestForm').addEventListener('click', () => {
+      requestPanel.hidden = true;
+      requestForm.reset();
+    });
+
+    requestForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(requestForm);
+      const savedRequests = JSON.parse(localStorage.getItem(requestStoreKey) || '[]');
+      savedRequests.unshift({
+        client: loggedUser || 'Customer',
+        subject: data.get('subject'),
+        priority: data.get('priority'),
+        message: data.get('message'),
+        date: new Date().toLocaleString('en-IN')
+      });
+      localStorage.setItem(requestStoreKey, JSON.stringify(savedRequests));
+      requestForm.reset();
+      requestStatus.textContent = 'Request submitted. Namadhu Jobs team will follow up soon.';
+    });
+  </script>
+</body>
+</html>

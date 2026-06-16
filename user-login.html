@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>User Login | Namadhu Jobs</title>
+  <meta name="description" content="User login page for Namadhu Jobs customers." />
+  <meta name="theme-color" content="#0a6cf5" />
+
+  <link rel="icon" href="assets/namadhu-jobs-logo-transparent.png" />
+  <link rel="canonical" href="https://namadhujobs.com/user-login.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/portal-login.css" />
+</head>
+
+<body>
+  <main class="portal-shell">
+    <section class="portal-side">
+      <div class="top-bar">
+        <a href="index.html" class="brand-link" aria-label="Namadhu Jobs home">
+          <img src="assets/namadhu-jobs-logo-transparent.png" srcset="assets/namadhu-jobs-logo-transparent.png 960w, assets/namadhu-jobs-logo-transparent-4k.png 3840w" sizes="150px" alt="Namadhu Jobs logo" />
+        </a>
+        <a href="index.html" class="home-button" aria-label="Back to Home" title="Back to Home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18 9 12l6-6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="side-content">
+        <span class="portal-badge">Customer Portal</span>
+        <h1>Track Your Marketing Work</h1>
+        <p class="side-copy">Login to view campaign updates, service status, contact details, and the next actions for your digital marketing project.</p>
+
+        <div class="portal-highlights" aria-label="Portal features">
+          <span>Campaign and service overview</span>
+          <span>Project status and support details</span>
+          <span>Quick access to WhatsApp follow-up</span>
+        </div>
+      </div>
+
+      <p class="side-footer">&copy; 2026 NamadhuJobs.com</p>
+    </section>
+
+    <section class="portal-main">
+      <div class="login-card">
+        <div class="card-top">
+          <p class="card-kicker">User Login</p>
+          <h2 class="card-title">Welcome Back</h2>
+          <p class="card-sub">Enter your registered client name, phone or email to check your access.</p>
+        </div>
+
+        <form class="login-form" data-role="user">
+          <div>
+            <label for="userId">Client Name, Phone or Email</label>
+            <input id="userId" name="userId" type="text" placeholder="Example: Arun Salon" autocomplete="username" required />
+          </div>
+
+          <div>
+            <label for="userPassword">Password</label>
+            <div class="password-wrap">
+              <input id="userPassword" name="password" type="password" placeholder="Enter password" autocomplete="current-password" required />
+              <button class="ghost-button" type="button" data-toggle-password="userPassword">Show</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="check-line">
+              <input type="checkbox" name="remember" />
+              Remember me
+            </label>
+            <a class="text-link" href="https://wa.me/917418130427" target="_blank" rel="noopener noreferrer">Need help?</a>
+          </div>
+
+          <button class="submit-button" type="submit">Login</button>
+        </form>
+
+        <div class="status-message" aria-live="polite"></div>
+
+        <div class="switch-card">
+          Admin team member? <a class="text-link" href="admin-login.html">Open admin login</a>.
+          <br />
+          New customer? <a class="text-link" href="index.html#contact">Contact us to create access</a>.
+        </div>
+
+        <p class="notice">This is a front-end login screen. Real secure login needs a backend, database, and server-side authentication.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-toggle-password]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const input = document.getElementById(button.dataset.togglePassword);
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        button.textContent = isPassword ? 'Hide' : 'Show';
+      });
+    });
+
+    const homeButton = document.querySelector('.home-button');
+    const getMaxShift = () => {
+      const maxShift = window.innerWidth - homeButton.offsetWidth - (window.innerWidth * 0.14);
+      return Math.max(0, maxShift);
+    };
+
+    const moveHomeButton = (direction) => {
+      if (direction === 'right') {
+        homeButton.style.setProperty('--back-shift', `${getMaxShift()}px`);
+        homeButton.classList.add('is-shifted');
+      }
+
+      if (direction === 'left') {
+        homeButton.style.setProperty('--back-shift', '0px');
+        homeButton.classList.remove('is-shifted');
+      }
+    };
+
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const direction = currentScrollY > lastScrollY ? 'right' : 'left';
+      moveHomeButton(direction);
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+
+    window.addEventListener('wheel', (event) => {
+      moveHomeButton(event.deltaY > 0 ? 'right' : 'left');
+    }, { passive: true });
+
+    let touchStartY = 0;
+
+    window.addEventListener('touchstart', (event) => {
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (event) => {
+      const touchCurrentY = event.touches[0].clientY;
+      moveHomeButton(touchCurrentY < touchStartY ? 'right' : 'left');
+      touchStartY = touchCurrentY;
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      if (homeButton.classList.contains('is-shifted')) {
+        homeButton.style.setProperty('--back-shift', `${getMaxShift()}px`);
+      }
+    });
+
+    document.querySelector('.login-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const status = document.querySelector('.status-message');
+      const userId = new FormData(form).get('userId');
+
+      localStorage.setItem('namadhuPortalRole', 'user');
+      localStorage.setItem('namadhuPortalUser', userId);
+
+      status.textContent = 'Login accepted. Opening user page...';
+      status.classList.add('is-visible');
+
+      setTimeout(() => {
+        window.location.href = 'user-page.html';
+      }, 700);
+    });
+  </script>
+</body>
+</html>
